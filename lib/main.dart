@@ -64,8 +64,23 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      createCounter(1);
     });
+  }
+
+  void _incrementCounter2() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      createCounter(2);
+    });
+  }
+
+  createCounter(int x){
+    _counter+=x;
   }
 
   @override
@@ -115,11 +130,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+      floatingActionButton: Row(children: [FloatingActionButton(
+        onPressed: _incrementCounter2,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      ),FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment 2',
+        child: const Icon(Icons.add),
+      ) // This trailing comma makes auto-formatting nicer for build methods.
+    ],));
   }
 }
